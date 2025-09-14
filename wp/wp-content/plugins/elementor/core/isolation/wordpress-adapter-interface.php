@@ -1,12 +1,42 @@
 <?php
 
-namespace ElementorPro\Core\Isolation;
+namespace Elementor\Core\Isolation;
 
 interface Wordpress_Adapter_Interface {
-	public function has_post_thumbnail();
-	public function get_comments_number();
-	public function is_author( $author = ''): bool;
-	public function wp_get_attachment_caption( $attachment_id ): string;
-	public function get_the_title( $post_id ): string;
-	public function current_user_can( $capability, ...$args ): bool;
+
+	public function get_plugins();
+
+	public function is_plugin_active( $plugin_path );
+
+	public function wp_nonce_url( $url, $action );
+
+	public function self_admin_url( $path );
+
+	public function get_pages( $args );
+
+	public function get_query( $args );
+
+	public function get_option( $option_key );
+
+	public function add_option( $option_key, $option_value );
+
+	public function update_option( $option_key, $option_value );
+
+	public function get_user_preferences( $preference_key );
+
+	public function set_user_preferences( $preference_key, $value );
+
+	public function is_new_installation();
+
+	public function add_query_arg( $args, $url );
+
+	public function has_custom_logo();
+
+	public function current_user_can( $capability, $args );
+
+	public function get_post_status( $post_id );
+
+	public function get_posts( $args );
+
+	public function get_post_types( $args = [], $output = 'names', $operator = 'and' );
 }
